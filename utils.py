@@ -68,3 +68,21 @@ def send_message(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,input_date,df,query):
     return message.sid
  """
 
+def send_message(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, input_date, df, query):
+    account_sid = TWILIO_ACCOUNT_SID
+    auth_token = TWILIO_AUTH_TOKEN
+
+    client = Client(account_sid, auth_token)
+
+    if df.empty:  # Verificamos si el DataFrame está vacío (no hay pronóstico de lluvia)
+        message_body = "Hoy no lloverá, no te preocupes hermosa"
+    else:
+        message_body = f'\nHola!\n\nEl pronóstico de lluvia hoy {input_date} en {query} es:\n\n{df.to_string(index=False)}'
+
+    message = client.messages.create(
+        body=message_body,
+        from_=PHONE_NUMBER,
+        to='+525586686270'
+    )
+
+    return message.sid
