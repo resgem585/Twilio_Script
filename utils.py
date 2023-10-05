@@ -50,7 +50,7 @@ def create_df(data):
     df_rain.set_index('Hora', inplace = True)
 
     return df_rain
-
+""" 
 def send_message(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,input_date,df,query):
 
     account_sid = TWILIO_ACCOUNT_SID
@@ -66,3 +66,5 @@ def send_message(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN,input_date,df,query):
                     )
 
     return message.sid
+ """
+
